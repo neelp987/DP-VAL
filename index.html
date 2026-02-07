@@ -25,7 +25,7 @@
       display: grid;
       place-items: center;
       background: radial-gradient(circle at top, var(--bg2), var(--bg1));
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      font-family: system-ui, sans-serif;
       overflow: hidden;
       padding: 16px;
     }
@@ -55,6 +55,7 @@
       margin: 0 auto 10px;
       display: block;
       filter: drop-shadow(0 10px 14px rgba(0,0,0,.12));
+      border-radius: 16px; /* optional: soften image corners slightly */
     }
 
     h1 {
@@ -133,144 +134,15 @@
   <canvas id="confettiCanvas"></canvas>
 
   <main class="card">
-    <!-- CUTE BABY ELEPHANT (static, no ear wiggle) -->
-    <svg class="art" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cute baby elephant waving with hearts">
-      <title>Baby Elephant</title>
-      <defs>
-        <!-- Soft fills and accents -->
-        <radialGradient id="eleGrey" cx="40%" cy="30%" r="75%">
-          <stop offset="0%"  stop-color="#F2F5F8"/>
-          <stop offset="70%" stop-color="#E6EBF1"/>
-          <stop offset="100%" stop-color="#DBE3EA"/>
-        </radialGradient>
-        <radialGradient id="innerEarPink" cx="40%" cy="40%" r="70%">
-          <stop offset="0%"  stop-color="#FFC9D8"/>
-          <stop offset="100%" stop-color="#FF9EB8"/>
-        </radialGradient>
-        <linearGradient id="heartGrad" x1="0" x2="1">
-          <stop offset="0" stop-color="#ff4d7d"/>
-          <stop offset="1" stop-color="#ff1f68"/>
-        </linearGradient>
-        <!-- Gentle drop shadow for the ground -->
-        <filter id="shadowBlur">
-          <feGaussianBlur stdDeviation="3"/>
-        </filter>
-      </defs>
-
-      <!-- Ground shadow -->
-      <ellipse cx="160" cy="214" rx="78" ry="12" fill="#000" opacity=".12" filter="url(#shadowBlur)"/>
-
-      <!-- Scene slight tilt for charm -->
-      <g transform="rotate(-1.5 160 120)" stroke-linecap="round" stroke-linejoin="round">
-        <!-- Hearts on the left -->
-        <g transform="translate(54,92)">
-          <path d="M18 6 C18 -3 30 -6 36 1 C42 -6 54 -3 54 6 C54 21 36 28 36 35 C36 28 18 21 18 6 Z"
-                fill="url(#heartGrad)"/>
-        </g>
-
-        <!-- Elephant body group -->
-        <g stroke="#2F3548">
-          <!-- Body -->
-          <path d="M100 152
-                   C100 130, 118 116, 160 116
-                   C202 116, 220 130, 220 152
-                   C220 178, 200 196, 160 196
-                   C120 196, 100 178, 100 152Z"
-                fill="url(#eleGrey)" stroke-width="4"/>
-
-          <!-- Head -->
-          <path d="M102 106
-                   C112 80, 140 66, 168 72
-                   C195 78, 210 97, 208 116
-                   C206 139, 185 152, 160 152
-                   C128 152, 93 134, 102 106Z"
-                fill="url(#eleGrey)" stroke-width="4"/>
-
-          <!-- Hair tuft -->
-          <path d="M168 66 C160 66 156 72 156 76
-                   M176 68 C170 68 166 74 166 78"
-                fill="none" stroke="#2F3548" stroke-width="4"/>
-
-          <!-- Ears (static) -->
-          <!-- Left ear -->
-          <g>
-            <path d="M102 108
-                     C 74 100, 62 84, 70 70
-                     C 84 48, 120 56, 132 78
-                     C 140 92, 132 112, 116 114 Z"
-                  fill="url(#eleGrey)" stroke-width="4"/>
-            <path d="M108 104
-                     C 88 98, 82 86, 90 76
-                     C 102 60, 124 66, 130 80
-                     C 134 90, 128 102, 116 106 Z"
-                  fill="url(#innerEarPink)" stroke="none"/>
-          </g>
-
-          <!-- Right ear -->
-          <g>
-            <path d="M218 108
-                     C 246 100, 258 84, 250 70
-                     C 236 48, 200 56, 188 78
-                     C 180 92, 188 112, 204 114 Z"
-                  fill="url(#eleGrey)" stroke-width="4"/>
-            <path d="M212 104
-                     C 232 98, 238 86, 230 76
-                     C 218 60, 196 66, 190 80
-                     C 186 90, 192 102, 204 106 Z"
-                  fill="url(#innerEarPink)" stroke="none"/>
-          </g>
-
-          <!-- Eyes (smiling) -->
-          <path d="M144 114 Q150 110 156 114" fill="none" stroke-width="4"/>
-          <path d="M170 114 Q176 110 182 114" fill="none" stroke-width="4"/>
-
-          <!-- Trunk (raised, waving) -->
-          <path d="M156 136
-                   C132 144, 120 130, 126 118
-                   C132 106, 150 108, 164 112
-                   C170 114, 176 112, 178 106
-                   C180 122, 172 134, 162 138 Z"
-                fill="url(#eleGrey)" stroke-width="4"/>
-
-          <!-- Small tongue hint -->
-          <path d="M172 130 C176 130 178 132 178 134"
-                fill="none" stroke="#FB6E8C" stroke-width="3"/>
-
-          <!-- Left arm (up, near trunk) -->
-          <path d="M118 148
-                   C110 132, 116 120, 130 120
-                   C142 120, 144 138, 132 144
-                   C126 146, 122 148, 118 148 Z"
-                fill="url(#eleGrey)" stroke-width="4"/>
-
-          <!-- Right arm (down) -->
-          <path d="M206 148
-                   C212 132, 206 120, 192 120
-                   C180 120, 178 138, 190 144
-                   C196 146, 200 148, 206 148 Z"
-                fill="url(#eleGrey)" stroke-width="4"/>
-
-          <!-- Legs + toes -->
-          <g fill="url(#eleGrey)" stroke-width="4">
-            <path d="M132 196 C132 184, 138 174, 148 172
-                     C154 170, 156 180, 156 196 Z"/>
-            <path d="M164 196 C164 180, 166 170, 172 172
-                     C182 174, 188 184, 188 196 Z"/>
-            <path d="M140 196 h12" stroke-width="3"/>
-            <path d="M172 196 h12" stroke-width="3"/>
-          </g>
-
-          <!-- Tail -->
-          <path d="M210 188
-                   C224 192, 234 196, 240 202"
-                fill="none" stroke="#2F3548" stroke-width="4"/>
-          <path d="M238 204
-                   C240 210, 236 212, 230 210
-                   C232 206, 234 204, 238 204 Z"
-                fill="#6B7A8C" stroke="#2F3548" stroke-width="2"/>
-        </g>
-      </g>
-    </svg>
+    <!-- IMAGE (replaces previous SVG) -->
+    <img
+      class="art"
+      src="https://img.freepik.com/free-vector/cute-elephant-with-love-sign-hand-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-4107.jpg?t=st=1770493073~exp=1770496673~hmac=95a3b23773d87affe4d3f43c5ad1a82de3609690efa618195e9d4b7cecfe491f&amp;w=740"
+      alt="Cute elephant with love sign"
+      loading="eager"
+      decoding="async"
+      referrerpolicy="no-referrer"
+    />
 
     <h1>Disha, will you be my valentine?</h1>
 
@@ -286,8 +158,8 @@
       <h2>YAY! 🎉</h2>
       <img
         class="fireworks"
-        src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dGhubGVhMmt5d3JpMG41cDR4YmtvamRrd3lvbHF3cnduNWF1cGxzcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RLcQGYmQU36d3FceiP/giphy.gif"
-        alt="Dance"
+        src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
+        alt="Fireworks"
       />
     </section>
   </main>
@@ -385,3 +257,19 @@
         (b.left + b.width / 2) - e.clientX,
         (b.top + b.height / 2) - e.clientY
       );
+      if (d < 140) moveNo(e.clientX, e.clientY);
+    });
+
+    noBtn.addEventListener("click", e => e.preventDefault());
+
+    /* ---------- YES CLICK ---------- */
+    yesBtn.addEventListener("click", () => {
+      zone.style.display = "none";
+      hint.style.display = "none";     // HIDE THE HINT
+      result.style.display = "block";
+      resizeConfettiCanvas();
+      fullScreenConfetti();
+    });
+  </script>
+</body>
+</html>
